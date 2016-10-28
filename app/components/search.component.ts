@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
 
+import { DealsService } from '../services/deals.service';
+import { Deal } from '../models/deal.model';
+
 @Component({
     selector: 'search',
-    templateUrl: './app/components/search.component.html'
+    templateUrl: './app/components/search.component.html',
+    providers: [
+        DealsService
+    ]
 })
 export class SearchComponent {
-    places: String[] = [
+    places: string[] = [
         'London',
         'Amsterdam',
         'Warsaw',
@@ -25,14 +31,13 @@ export class SearchComponent {
     ];
 
     // Departure & Arrival selects
-    selectedFrom:String = '';
-    selectedTo:String = '';
+    selectedFrom:string = '';
+    selectedTo:string = '';
 
     // Filter
     routeFilter = 'cheapest';
 
-    ngOnInit() {
-    }
+    constructor(private dealsService: DealsService) { }
 
     reset() {
         this.selectedFrom = '';
@@ -45,6 +50,14 @@ export class SearchComponent {
     }
 
     search() {
-        console.log('Searching');
+        this.dealsService.getDeals(
+            this.selectedFrom,
+            this.selectedTo,
+            this.routeFilter
+        ).then(deals => {
+            
+            
+
+        });
     }
 }
