@@ -1,5 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MaterializeDirective } from "angular2-materialize";
 
 import { PrescouterComponent }  from './prescouter.component';
 import { SearchComponent } from './search.component';
@@ -9,6 +10,8 @@ import { SearchComponent } from './search.component';
       BrowserModule
     ],
   declarations: [
+      MaterializeDirective,
+
       PrescouterComponent,
       SearchComponent
   ],

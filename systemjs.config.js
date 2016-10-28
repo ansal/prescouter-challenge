@@ -25,8 +25,11 @@
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
 
       // other libraries
-      'rxjs':                      'npm:rxjs',
+      'rxjs': 'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
+      "materialize-css": "node-modules/materialize-css",
+      "materialize": "node_modules/angular2-materialize",
+      "angular2-materialize": "node_modules/angular2-materialize"
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -37,6 +40,13 @@
       rxjs: {
         defaultExtension: 'js'
       },
+      "materialize-css": {
+        "main": "dist/js/materialize"
+      },
+      "materialize": {
+        "main": "dist/materialize-directive",
+        "defaultExtension": "js"
+      }
     }
   });
 })(this);
