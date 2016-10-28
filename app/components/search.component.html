@@ -1,1 +1,40 @@
-I am search component
+<div class="card-panel">
+    <div class="card-content">
+        <div class="row">
+            <div class="col s12 m5">
+                <select [(ngModel)]="selectedFrom" name="selectedFrom" materialize="material_select">
+                    <option [ngValue]="" disabled selected>Departure City</option>
+                    <option *ngFor="let place of places" [value]="place">{{place}}</option>
+                </select>
+                <label>From</label>
+            </div>
+            <div class="col s12 m2">
+                <div class="center-align">
+                    <button (click)="swapFromAndTo()" class="btn-floating btn-large waves-effect waves-light pink">&lt;-&gt;</button>
+                </div>
+            </div>
+            <div class="col s12 m5">
+                <select [(ngModel)]="selectedTo" name="selectedTo" materialize="material_select">
+                    <option value="" disabled selected>Arrival City</option>
+                    <option *ngFor="let place of places" [value]="place">{{place}}</option>
+                </select>
+                <label>To</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="co s12 m5">
+                <input [(ngModel)]="routeFilter" value="cheapest" name="route-filter" type="radio" id="route-filter-cheapest" />
+                <label for="route-filter-cheapest">Cheapest</label>
+                <input [(ngModel)]="routeFilter" value="fastest" name="route-filter" type="radio" id="route-filter-fastest" />
+                <label for="route-filter-fastest">Fastest</label>
+                <input [(ngModel)]="routeFilter" value="all" name="route-filter" type="radio" id="route-filter-all" />
+                <label for="route-filter-all">All</label>
+                <div class="right-align">
+                    <button *ngIf="selectedFrom || selectedTo" (click)="reset()" class="btn-large waves-effect waves-light white black-text">RESET</button>
+                    &nbsp;
+                    <button (click)="search()" class="btn-large waves-effect waves-light blue">SEARCH</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
