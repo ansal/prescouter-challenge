@@ -6,3 +6,9 @@ body {
 .heading {
     font-size: 2em;
 }
+
+.results {
+    border-style: solid;
+    border-color: #efeef0;
+    border-width: 10px;
+}

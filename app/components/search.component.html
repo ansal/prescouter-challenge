@@ -23,17 +23,55 @@
         </div>
         <div class="row">
             <div class="co s12 m5">
-                <input [(ngModel)]="routeFilter" value="cheapest" name="route-filter" type="radio" id="route-filter-cheapest" />
+                <input (click)="search('cheapest')" [(ngModel)]="routeFilter" value="cheapest" name="route-filter" type="radio" id="route-filter-cheapest" />
                 <label for="route-filter-cheapest">Cheapest</label>
-                <input [(ngModel)]="routeFilter" value="fastest" name="route-filter" type="radio" id="route-filter-fastest" />
+                <input (click)="search('fastest')" [(ngModel)]="routeFilter" value="fastest" name="route-filter" type="radio" id="route-filter-fastest" />
                 <label for="route-filter-fastest">Fastest</label>
-                <input [(ngModel)]="routeFilter" value="all" name="route-filter" type="radio" id="route-filter-all" />
+                <input (click)="search('all')" [(ngModel)]="routeFilter" value="all" name="route-filter" type="radio" id="route-filter-all" />
                 <label for="route-filter-all">All</label>
                 <div class="right-align">
                     <button *ngIf="selectedFrom || selectedTo" (click)="reset()" class="btn-large waves-effect waves-light white black-text">RESET</button>
                     &nbsp;
                     <button (click)="search()" class="btn-large waves-effect waves-light blue">SEARCH</button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-panel red lighten-2" *ngIf="formError">
+    <div class="card-content">
+        <div class="row">
+            <div class="col s12 m12">
+                <span class="text-white"> {{formError}} </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-panel" *ngIf="resultsReady.length">
+    <div class="card-content">
+        <div class="row">
+            <div class="col s12 m5">
+                <table>
+                    <tbody>
+                        <tr class="results" *ngFor="let result of resultsReady">
+                            <td colspan="2">
+                                {{result.departure}} >{{result.arrival}}
+                                <br>
+                                <small class="text-lighten-2">
+                                    {{result.transport}} <em>{{result.reference}}</em> for {{result.duration_hours}}h{{result.duration_minutes}}
+                                </small>
+                            </td>
+                            <td>{{result.discounted_cost}} EUR</td>
+                        </tr>
+                        <tr class="results">
+                            <td><strong>Total</strong></td>
+                            <td><strong>{{resultHours}}h{{resultMinutes}}m</strong></td>
+                            <td><strong>{{resultCost}}EUR</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
